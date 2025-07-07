@@ -1,0 +1,5 @@
+<div class="notification-container">
+  @for (toast of ns.toasts(); track toast.id) {
+  <app-toast [toast]="toast" (close)="ns.remove(toast.id)"></app-toast>
+  }
+</div>

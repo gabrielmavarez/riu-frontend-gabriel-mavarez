@@ -1,0 +1,16 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding: 4px 0;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    gap: 10px;
+}
+
+p {
+    padding: 10px;
+}

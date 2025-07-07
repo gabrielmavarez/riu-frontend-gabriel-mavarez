@@ -1,0 +1,19 @@
+<div class="filter">
+  <label>Buscar superhéroes por nombre:</label>
+  <input type="text" [(ngModel)]="filter" (ngModelChange)="updateFilter($event)">
+</div>
+
+@if (filteredHeroes().length > 0) {
+  <app-table
+    [heroes]="paginatedHeroes()"
+    (edit)="navigateToEdit($event)"
+    (delete)="deleteHero($event)"
+  ></app-table>
+  <app-paginator
+    [total]="filteredHeroes().length"
+    [pageSize]="pageSize"
+    (pageChange)="pageIndex.set($event)"
+    ></app-paginator>
+} @else {
+  <p>No hay héroes para mostrar</p>
+}

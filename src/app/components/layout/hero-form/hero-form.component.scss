@@ -1,0 +1,86 @@
+.hero-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #f9fafb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Roboto', sans-serif;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #374151;
+    }
+
+    input {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+      }
+
+      &[uppercase] {
+        text-transform: uppercase;
+      }
+    }
+
+    .error {
+      color: #dc2626;
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:first-child {
+        background-color: #4f46e5;
+        color: white;
+
+        &:hover:not(:disabled) {
+          background-color: #4338ca;
+        }
+
+        &:disabled {
+          background-color: #e5e7eb;
+          color: #9ca3af;
+          cursor: not-allowed;
+        }
+      }
+
+      &:last-child {
+        background-color: #e5e7eb;
+        color: #374151;
+
+        &:hover {
+          background-color: #d1d5db;
+        }
+      }
+    }
+  }
+}

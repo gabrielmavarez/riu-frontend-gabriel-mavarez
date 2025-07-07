@@ -1,0 +1,9 @@
+<nav>
+  <h1>Superhero Database</h1>
+  @if (showAddButton()) {
+    <div class="controls">
+      <button (click)="addHero()">Añadir Héroe</button>
+      <button (click)="simulateLoad()">Simular Carga</button>
+    </div>
+  }
+</nav>

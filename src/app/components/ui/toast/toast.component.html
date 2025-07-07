@@ -1,0 +1,4 @@
+<div class="toast" [ngClass]="toast().type">
+  <span>{{ toast().message }}</span>
+  <button (click)="close.emit()">×</button>
+</div>

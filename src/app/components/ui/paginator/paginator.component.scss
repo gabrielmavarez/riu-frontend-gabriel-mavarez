@@ -1,0 +1,40 @@
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+
+  button {
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-tertiary);
+    }
+
+    &.active {
+      background-color: var(--color-tertiary);
+      color: var(--color-surface);
+      font-weight: bold;
+    }
+
+    &:disabled {
+      background-color: #656565;
+      color: var(--color-surface);
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    font-size: 0.9rem;
+    color: #374151;
+  }
+}
