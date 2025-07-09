@@ -5,6 +5,7 @@ import { Component, computed, input, output, signal } from '@angular/core';
   imports: [],
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
+  standalone: true,
 })
 export class PaginatorComponent {
   total = input.required<number>();

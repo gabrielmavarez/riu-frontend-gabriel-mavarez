@@ -7,12 +7,20 @@ import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-table',
   imports: [FontAwesomeModule],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  styleUrl: './table.component.scss',
+  standalone: true,
 })
+
 export class TableComponent {
   heroes = input.required<Hero[]>();
   edit = output<number>();
-  delete = output<number>();
+  deleteHero = output<number>();
   faTrash = faTrash;
   faPenToSquare = faPenToSquare;
+
+  constructor() {
+    this.deleteHero.subscribe((id) => {
+      console.log('deleteHero emitted from TableComponent:', id);
+    });
+  }
 }

@@ -7,7 +7,7 @@
   <app-table
     [heroes]="paginatedHeroes()"
     (edit)="navigateToEdit($event)"
-    (delete)="deleteHero($event)"
+    (deleteHero)="deleteHero($event)"  
   ></app-table>
   <app-paginator
     [total]="filteredHeroes().length"

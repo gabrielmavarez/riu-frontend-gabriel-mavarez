@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroListComponent } from './hero-list.component';
 import { HeroService } from '../../../core/services/hero.service';
@@ -20,6 +22,14 @@ describe('HeroListComponent', () => {
       filteredHeroes: computed(() => HEROES),
       setFilter: jasmine.createSpy('setFilter'),
       deleteHero: jasmine.createSpy('deleteHero'),
+    };
+
+    (window as any).document.startViewTransition = (fn: () => void) => {
+      fn();
+      return {
+        ready: Promise.resolve(),
+        finished: Promise.resolve()
+      };
     };
 
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
@@ -57,16 +67,30 @@ describe('HeroListComponent', () => {
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/add']);
   });
 
-  it('debería eliminar el héroe si se confirma', () => {
-    spyOn(window, 'confirm').and.returnValue(true);
-    component.deleteHero(3);
-    expect(mockHeroService.deleteHero).toHaveBeenCalledWith(3);
+  it('debería eliminar el héroe si se confirma', async () => {
+    spyOn(Swal, 'fire').and.returnValue(Promise.resolve({
+      isConfirmed: true,
+      isDenied: false,
+      isDismissed: false,
+      value: null
+    }));
+
+    await component.deleteHero(3);
+
+    expect(mockHeroService.deleteHero!).toHaveBeenCalledWith(3);
   });
 
-  it('no debería eliminar el héroe si se cancela', () => {
-    spyOn(window, 'confirm').and.returnValue(false);
-    component.deleteHero(1);
-    expect(mockHeroService.deleteHero).not.toHaveBeenCalled();
+  it('no debería eliminar el héroe si se cancela', async () => {
+    spyOn(Swal, 'fire').and.returnValue(Promise.resolve({
+      isConfirmed: false,
+      isDenied: false,
+      isDismissed: true,
+      value: null
+    }));
+
+    await component.deleteHero(1);
+    
+    expect(mockHeroService.deleteHero!).not.toHaveBeenCalled();
   });
 
   it('debería paginar correctamente', () => {

@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 import {
   ChangeDetectorRef,
   Component,
@@ -51,12 +53,27 @@ export class HeroListComponent {
     this.router.navigate(['/add']);
   }
 
-  deleteHero(id: number) {
-    if (confirm('¿Seguro que quieres eliminar este héroe')) {
-      document.startViewTransition(() => {
+  async deleteHero(id: number) {
+    const result = await Swal.fire({
+      title: '¿Seguro que quieres eliminar este héroe?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
+      if (typeof (document as any).startViewTransition === 'function') {
+        document.startViewTransition(() => {
+          this.heroService.deleteHero(id);
+          this.cdr.detectChanges();
+        });
+      } else {
         this.heroService.deleteHero(id);
         this.cdr.detectChanges();
-      });
+      }
     }
   }
 }
