@@ -20,8 +20,8 @@ Prueba técnica par MinData - Gabriel Mavarez
 2. Para editar superhéroe, hacer click en el ícono de lapiz. Esto abrirá una ventana con los campos "Nombre", "Superpoder" y "Editorial".
     2.1. Se pueden modificar los campos de cada superhéroe. Para guardar cambios, hacer click en el botón "Guardar".
     2.2. Para no editar ningún campo, hacer click en el botón "Cancelar".
-3. Para eliminar superhéroe, hacer click en el ícono de papelera. Esto abrirá una confirmación del navegador.
-    3.1. Para confirmar eliminación, hacer click en "Ok".
+3. Para eliminar superhéroe, hacer click en el ícono de papelera. Esto abrirá una ventana de confirmación.
+    3.1. Para confirmar eliminación, hacer click en "Sí, eliminar".
     3.2. Para cancelar eliminación, hacer click en "Cancelar".
 4. Para visualizar superhéroes, hacer uso de los botones de navegación.
     4.1. Al hacer click en el botón enumerado, se muestran los superhéroes de esa página.
